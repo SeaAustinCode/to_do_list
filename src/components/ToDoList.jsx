@@ -62,7 +62,7 @@ const ToDoList = (props) => {
                     }} type="text"
                     value={inputText} /> {/* newToDo is a whole object that has todoitems */}
                     {/* <p className='form-container label'>Add new To Do item</p> */}
-                    <button>Add</button>
+                    <button>Add a new item to the list</button>
             </form>
             {toDoItems.map((newToDo, index) => {
                 return (
