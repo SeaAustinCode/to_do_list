@@ -4,9 +4,17 @@ const ToDoList = (props) => {
     // First determine what can be in state. ==> input box // list of todo items // checkbox 
 
     const [newToDo, setNewToDo] = useState({ toDoItems: "", isComplete: false }); //input box 
-    const [toDoItems, setToDoItems] = useState([{ toDoItems: "take out the trash", isComplete: false }, { toDoItems: "take out the trash", isComplete: false }, { toDoItems: "walk the dog", isComplete: false }]); //list of items for to do list 
+    const [toDoItems, setToDoItems] = useState([{ toDoItems: "Take out the trash", isComplete: false }, { toDoItems: "Make Dinner", isComplete: false }, { toDoItems: "Walk the dog", isComplete: false }]); //list of items for to do list 
     const [inputText, setInputText] = useState("")
+    // const [inputErrors, setInputErrors] = useState({})
 
+    // const validate = (inputText) => {
+    //     const errors = {};
+    //     if (!inputText) {
+    //         errors.toDoItmes = "Must provide a to do item!"
+    //     }
+    //     return errors;
+    // }
 
 
     // CREATE
@@ -42,40 +50,39 @@ const ToDoList = (props) => {
 
 
     return (
-        <div>
-            <h1>TO DO LIST: </h1>
-            {/* <strong>toDoItems: </strong> {JSON.stringify(toDoItems)} */}
-            <hr />
-            <hr />
-            {/* <strong>newToDo: </strong>{JSON.stringify(newToDo)} */}
-            {/* <strong>newToDo: </strong>{JSON.stringify(inputText)} */}
+        <div className='form-container'>
+            <h1 className='header'>TO DO: </h1>
 
             <form onSubmit={(e) => {
                 handleNewSubmit(e)
             }}>
-                <input onChange={(e) => {
-                    setInputText(e.target.value);
-                }} type="text"
+                <input className='form-container input-field'
+                    onChange={(e) => {
+                        setInputText(e.target.value);
+                    }} type="text"
                     value={inputText} /> {/* newToDo is a whole object that has todoitems */}
-                <div>
+                    {/* <p className='form-container label'>Add new To Do item</p> */}
                     <button>Add</button>
-                </div>
             </form>
             {toDoItems.map((newToDo, index) => {
                 return (
-                    <div key={index}>
-                        <input
-                            onChange={(e) => {
-                                handleCheckBox(index);
-                            }} checked={newToDo.isComplete} //toDoItems is the array of objects 
-                            type="checkbox" />
-                        <p style={{ textDecoration: toDoItems[index].isComplete ? "line-through" : "none" }}> {/* toDoItems = need to access the state value so it can be changed. */} 
-                            {newToDo.toDoItems}
-                        </p>
-                        <button onClick={(e) => { // 
-                            handleDeleteTask(index); //need to pass in index so that our function knows which item to delete. 
-                        }}>Delete</button> {/* newtodo is representing the whole object, need to append todoitems */}
-                    </div>
+                    <>
+                        <div key={index} className="checkList">
+                            <input className="checkmark"
+                                onChange={(e) => {
+                                    handleCheckBox(index);
+                                }} checked={newToDo.isComplete} //toDoItems is the array of objects 
+                                type="checkbox" />
+                            <p style={{ textDecoration: toDoItems[index].isComplete ? "line-through" : "none" }}> {/* toDoItems = need to access the state value so it can be changed. */}
+                                {newToDo.toDoItems}
+                            </p>
+                            <div>
+                                <button onClick={(e) => { // 
+                                    handleDeleteTask(index); //need to pass in index so that our function knows which item to delete. 
+                                }}>Delete</button> {/* newtodo is representing the whole object, need to append todoitems */}
+                            </div>
+                        </div>
+                    </>
                 )
             })}
         </div>

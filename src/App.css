@@ -1,38 +1,91 @@
-.App {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.form-container {
+  width: 50%;
+  border: 3px solid #132F3B;
+  background-color: #38A1CB;
+  border-radius: .25rem;
+  padding: 1rem;
+  margin: 2rem auto;
+}
+
+.form-container label {
+  display: block;
+  text-align: left;
+  font-weight: bold;
+  margin-bottom: .35rem;
+}
+
+.form-container .input-field {
+  width: 100%;
+  height: 32px;
+  padding: .25rem;
+  margin-bottom: .75rem;
+  display: block;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container input:checked ~ .checkmark {
+  background-color: #E59265;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.form-container button {
+  width: 100%;
+  padding: .5rem;
+  border: #FFFFFF;
+  border-width: thin;
+  border-radius: 50%;
+  background-color: #132F3B;
   color: white;
+  margin-top: 1rem;
 }
 
-.App-link {
-  color: #61dafb;
+
+.form-container span {
+  display: block;
+  text-align: left;
+  color: red;
+  font-size: .85rem;
+  margin-bottom: .25rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.header {
+  text-align: center;
+  font-size: xx-large;
+  color: #E59265;
+}
+
+.checkList {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  
+}
+
+.app-background {
+  background-color: lightblue;
+}
+
+.checkmark {
+  top: 2;
+  left: 2;
+  height: 25px;
+  width: 25px;
+  background-color: #E59265;
 }
